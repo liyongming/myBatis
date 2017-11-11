@@ -19,5 +19,7 @@
 	<mappers>
 		<mapper resource="com/cn/mapper/EmpMapper.xml"/>
 		<mapper resource="com/cn/mapper/deptMapper.xml"/>
+		<mapper resource="com/cn/mapper/empAndDept.xml"/>
+		<mapper resource="com/cn/mapper/deptSelectEmp.xml"/>
 	</mappers>
 </configuration>

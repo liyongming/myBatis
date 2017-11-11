@@ -1,5 +1,7 @@
 package com.cn.po;
 
+import java.util.List;
+
 /**
  *@dept.java
  *@
@@ -14,6 +16,8 @@ public class deptB {
 	private Integer deptno;//部门编号
 	private String dname;//部门名字
 	private String loc;//部门位置
+	private List<emp> emp;
+	
 	public Integer getDeptno() {
 		return deptno;
 	}
@@ -32,9 +36,16 @@ public class deptB {
 	public void setLoc(String loc) {
 		this.loc = loc;
 	}
+	
+	public List<emp> getEmp() {
+		return emp;
+	}
+	public void setEmp(List<emp> emp) {
+		this.emp = emp;
+	}
 	@Override
 	public String toString() {
-		return "dept [deptno=" + deptno + ", dname=" + dname + ", loc=" + loc + "]";
+		return "deptB [deptno=" + deptno + ", dname=" + dname + ", loc=" + loc + ", emp=" + emp + "]";
 	}
 	
 	

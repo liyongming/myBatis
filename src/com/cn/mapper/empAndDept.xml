@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cn.mapper.empAndDept">
+	<resultMap type="com.cn.po.emp" id="emp">
+		<id property="empno" column="empno"/>
+		<result property="ename" column="ename"/>
+		<result property="job" column="job"/>
+		<result property="mgr" column="mgr"/>
+		<result property="hirdate" column="hiredate"/>
+		<result property="sal" column="sal"/>
+		<result property="comm" column="comm"/>
+		<result property="deptno" column="deptno"/>
+		<association property="depts" column="deptno" javaType="com.cn.po.deptB" 
+		select="selectDeptById"></association>
+	</resultMap>
+	
+	<select id="selectDeptById" resultType="com.cn.po.deptB">
+		SELECT deptno,dname,loc FROM dept WHERE deptno = #{adfad}
+	</select>
+	<select id="selectStudent" resultMap="emp">
+		SELECT empno,ename,job,mgr,hiredate,sal,comm,deptno FROM emp
+	</select>
+</mapper>

@@ -1,6 +1,7 @@
 package com.cn.po;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  *@emp.java
@@ -21,6 +22,8 @@ public class emp {
 	private Integer sal;
 	private Integer comm;
 	private Integer deptno;
+	private deptB depts;//为了做一对多的练习，查询某个员工时，查询对应的部门
+	
 	public Integer getEmpno() {
 		return empno;
 	}
@@ -72,9 +75,8 @@ public class emp {
 	@Override
 	public String toString() {
 		return "emp [empno=" + empno + ", ename=" + ename + ", job=" + job + ", mgr=" + mgr + ", hirdate=" + hirdate
-				+ ", sal=" + sal + ", comm=" + comm + ", deptno=" + deptno + "]";
+				+ ", sal=" + sal + ", comm=" + comm + ", deptno=" + deptno + ", depts=" + depts + "]";
 	}
-	
 	
 	
 }

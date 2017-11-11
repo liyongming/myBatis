@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cn.mapper.deptSelectEmp">
+	<resultMap type="com.cn.po.deptB" id="dept">
+		<id property="deptno" column="deptno"/>
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc"/>
+		<!-- property类中对应的集合的别名    column可以理解为在emp表中关联这个表的字段，   javaType该字段返回的数据类型 ofType集合中的数据类型 -->
+		<collection property="emp" column="deptno" javaType="ArrayList" ofType="com.cn.po.emp"
+		select="selectEmpByDeptId">
+		</collection>
+	</resultMap>
+	
+	<select id="selectEmpByDeptId" resultType="com.cn.po.emp">
+		SELECT * from emp WHERE deptno = #{adfasdfa}
+	</select>
+	<select id="selectDept" resultMap="dept">
+		SELECT deptno,dname,loc FROM dept
+	</select>
+</mapper>
