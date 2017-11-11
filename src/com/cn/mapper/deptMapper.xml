@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.mapper.deptMapper">
+	<resultMap type="com.cn.po.deptB" id="dept">
+		<id property="deptno" column="deptno"/>
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc"/>
+	</resultMap>
+	<!-- 查询 -->
+	<select id="selectOne" parameterType="int" resultMap="dept">
+		SELECT deptno,dname,loc FROM dept
+		where deptno =#{deptno}
+	</select>
+	<!-- 查询所有的 
+		出现的一个问题，当parameterType=""为空值时。这个参数不能出现
+	parameterType="" -->
+	<select id="selectAll" resultMap="dept">
+		SELECT deptno,dname,loc FROM dept
+	</select>
+	<!-- 增加-->
+	<!-- ${loc} 使用$符号时会报错###  -->
+		<!-- SQL: INSERT INTO dept(deptno,dname,loc)   VALUES (?,?,北京) -->
+		<!-- ### Cause: java.sql.SQLException: ORA-00984: 列在此处不允许 -->
+		<!-- 可以从上面看出使用$符号的时候，北京没有被加上    '' -->
+	<!-- #{loc}-->
+	<insert id="insert" parameterType="com.cn.po.deptB">
+		INSERT INTO dept(deptno,dname,loc)
+		VALUES (#{deptno},#{dname},#{loc})
+	</insert>
+	<!-- 修改 -->
+	<update id="update" parameterType="com.cn.po.deptB">
+		UPDATE dept
+		SET dname= #{dname},loc=#{loc}
+		WHERE deptno = #{deptno}
+	</update>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM dept
+		WHERE deptno = #{deptno}
+	</delete>
+</mapper>
