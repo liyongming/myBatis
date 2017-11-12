@@ -4,6 +4,8 @@
 <configuration>
 	<settings>
 		<setting name="logImpl" value="LOG4J"/>
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<setting name="aggressiveLazyLoading" value="false"/>
 	</settings>
 	<environments default="oracle">
 		<environment id="oracle">
@@ -21,5 +23,7 @@
 		<mapper resource="com/cn/mapper/deptMapper.xml"/>
 		<mapper resource="com/cn/mapper/empAndDept.xml"/>
 		<mapper resource="com/cn/mapper/deptSelectEmp.xml"/>
+		<mapper resource="com/cn/interference/userMapper.xml"/>
+		<mapper resource="com/cn/interference/orderMapper.xml"/>
 	</mappers>
 </configuration>
