@@ -43,7 +43,7 @@ public class userTest {
 	public void selectStudentByInterfence(){
 		SqlSession sqlSession = sqlSessionFactory.getSqlSession();
 		tb_userInterference mapper = sqlSession.getMapper(tb_userInterference.class);
-		tb_user user = mapper.selectById("2");
+		tb_user user = mapper.selectById("1");
 		List<tb_order> orders = user.getOrders();
 		for(int i = 0;i<orders.size();i++){
 			System.out.println(orders.get(i).getCode());

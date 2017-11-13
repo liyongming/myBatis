@@ -3,9 +3,39 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cn.interference.orderInterference">
+	<resultMap type="com.cn.po.tb_order" id="order">
+		<id property="id" column="id"/>
+		<result property="code" column="code"/>
+		<result property="total" column="total"/>
+	</resultMap>
 	<select id="selectOrderByUserId" parameterType="String" resultType="com.cn.po.tb_order">
 		SELECT id,code,total
 		FROM tb_order
 		WHERE user_id= #{id}
+	</select>
+	<!-- 测试写的接口 -->
+	<select id="testSelect" parameterType="int" resultMap="order">
+		SELECT id,code,total
+		FROM tb_order
+		WHERE id = #{id}
+	</select>
+	<!-- 测试If的使用 -->
+	<select id="select_If" resultType="com.cn.po.tb_order">
+		SELECT id,code,total
+		FROM tb_order
+		<if test="id != null">
+			WHERE id = #{id}
+		</if>
+	</select>
+	<select id="select_choose" resultType="com.cn.po.tb_order">
+		SELECT id,code,total
+		FROM tb_order
+		<where>
+			<choose>
+				<when test="total != null and total >100">
+					total > #{total}
+				</when>
+			</choose>		
+		</where>
 	</select>
 </mapper>

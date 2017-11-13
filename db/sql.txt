@@ -1,0 +1,37 @@
+INSERT INTO tb_user VALUES(1,'张三','zhangsan','123456','17194798004','001');
+INSERT INTO tb_user VALUES(2,'002','002','123456','17194798004002','002');
+
+INSERT INTO tb_order VALUES(5,1,'001的订单',110);
+
+INSERT INTO tb_article(article_id,NAME,price,remark)
+VALUES(1,'商品01',20,'商品01来自京东');
+INSERT INTO tb_article(article_id,NAME,price,remark)
+VALUES(2,'商品02',21,'商品02来自京东');
+INSERT INTO tb_article(article_id,NAME,price,remark)
+VALUES(3,'商品03',23,'商品03来自京东');
+INSERT INTO tb_article(article_id,NAME,price,remark)
+VALUES(4,'商品04',24,'商品04来自京东');
+
+
+
+
+SELECT * FROM tb_user;
+SELECT * FROM tb_order;
+SELECT * FROM tb_article;
+SELECT * FROM tb_item;
+--订单
+1
+2
+3
+4
+5
+--商品
+1
+2
+3
+4
+
+SELECT * FROM tb_item;
+INSERT INTO tb_item(item_id,ID,article_id)
+VALUES(8,5,3);
+
