@@ -6,7 +6,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import com.cn.interference.articleInterference;
 import com.cn.interference.orderInterference;
+import com.cn.po.tb_article;
 import com.cn.po.tb_order;
 import com.cn.util.sqlSessionFactory;
 
@@ -54,6 +56,19 @@ public class orderTest {
 		List<tb_order> orderList = mapper.select_choose(params);
 		for (tb_order tb_order : orderList) {
 			System.out.println(tb_order.getId());
+		}
+	}
+	@Test
+	public void testSelectByOrderId() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.getSqlSession();
+		orderInterference mapper = sqlSession.getMapper(orderInterference.class);
+		List<tb_order> selectOrderByUserId = mapper.selectOrderByUserId("1");
+		for (tb_order tb_order : selectOrderByUserId) {
+			System.out.println(tb_order.getCode()+"---"+tb_order.getId());
+			List<tb_article> selectList = sqlSession.selectList("com.cn.interference.articleInterference.selectArticleByOrderId", tb_order.getId());
+			for (tb_article tb_article : selectList) {
+				System.out.println(tb_article.getName()+"商品价钱"+tb_article.getPrice());
+			}
 		}
 	}
 }

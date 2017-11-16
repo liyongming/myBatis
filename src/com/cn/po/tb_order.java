@@ -1,5 +1,7 @@
 package com.cn.po;
 
+import java.util.List;
+
 /**
  *@tb_order.java
  *@
@@ -14,6 +16,14 @@ public class tb_order {
 	private Integer id;
 	private String code;
 	private Integer total;
+	private List<tb_article> articles;
+	
+	public List<tb_article> getArticles() {
+		return articles;
+	}
+	public void setArticles(List<tb_article> articles) {
+		this.articles = articles;
+	}
 	public Integer getId() {
 		return id;
 	}

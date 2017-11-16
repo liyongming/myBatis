@@ -10,7 +10,8 @@
 		<result property="password" column="password"/>
 		<result property="phone" column="phone"/>
 		<result property="address" column="address"/>
-		<collection property="orders" javaType="ArrayList" column="user_id" ofType="com.cn.po.tb_order" 
+		<collection property="orders" javaType="ArrayList" column="user_id" 
+		ofType="com.cn.po.tb_order" 
 		select="com.cn.interference.orderInterference.selectOrderByUserId">
 			<id property="id" column="id"/>
 			<result property="code" column="code"/>

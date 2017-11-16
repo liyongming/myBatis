@@ -14,6 +14,14 @@ public class tb_article {
 	private Integer article_id;
 	private String name;
 	private String remark;
+	private Integer price;
+	
+	public Integer getPrice() {
+		return price;
+	}
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
 	public Integer getArticle_id() {
 		return article_id;
 	}

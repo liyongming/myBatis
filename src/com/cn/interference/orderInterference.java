@@ -19,4 +19,5 @@ public interface orderInterference {
 	public tb_order testSelect(int id);
 	public List<tb_order> select_If(HashMap<String,Object> params);
 	public List<tb_order> select_choose(HashMap<String,Object> params);
+	public List<tb_order> selectOrderByUserId(String id);
 }

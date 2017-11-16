@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cn.interference.articleInterference">
+	<resultMap type="com.cn.po.tb_article" id="article">
+		<id property="article_id" column="article_id" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="remark" column="remark" />
+	</resultMap>
+	<select id="selectArticleByOrderId" resultMap="article">
+		SELECT * FROM
+		tb_article
+		WHERE article_id IN
+		(
+		SELECT article_id FROM tb_item WHERE ID= #{id}
+		)
+	</select>
+</mapper>

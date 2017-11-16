@@ -25,5 +25,6 @@
 		<mapper resource="com/cn/mapper/deptSelectEmp.xml"/>
 		<mapper resource="com/cn/interference/userMapper.xml"/>
 		<mapper resource="com/cn/interference/orderMapper.xml"/>
+		<mapper resource="com/cn/interference/articleMapper.xml"/>
 	</mappers>
 </configuration>
