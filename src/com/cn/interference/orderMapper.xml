@@ -17,7 +17,7 @@
 		</collection>
 	</resultMap>
 	<select id="selectOrderByUserId" parameterType="String" resultType="com.cn.po.tb_order">
-		SELECT id,code,total
+		SELECT id ,code,total
 		FROM tb_order
 		WHERE user_id= #{id}
 	</select>

@@ -9,7 +9,7 @@
 		<result property="price" column="price" />
 		<result property="remark" column="remark" />
 	</resultMap>
-	<select id="selectArticleByOrderId" resultMap="article">
+	<select id="selectArticleByOrderId" parameterType="int" resultMap="article">
 		SELECT * FROM
 		tb_article
 		WHERE article_id IN

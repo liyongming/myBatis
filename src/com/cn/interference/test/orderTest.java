@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
-import com.cn.interference.articleInterference;
 import com.cn.interference.orderInterference;
 import com.cn.po.tb_article;
 import com.cn.po.tb_order;
@@ -58,6 +57,13 @@ public class orderTest {
 			System.out.println(tb_order.getId());
 		}
 	}
+	/**
+	 * 多对多的关系实现的太差劲，没有实现自动加载的效果,
+	 * 现在测试时，根据用户ID查询出订单，如果查询出多条记录的情况下，需要在主表。用户表中进行定义，
+	 * userMapper.xml
+	 *    <user><collection oftype="tb_order"><collection oftype="tb_articles"></collection></collection></user>
+	 * @throws Exception
+	 */
 	@Test
 	public void testSelectByOrderId() throws Exception{
 		SqlSession sqlSession = sqlSessionFactory.getSqlSession();
@@ -69,6 +75,22 @@ public class orderTest {
 			for (tb_article tb_article : selectList) {
 				System.out.println(tb_article.getName()+"商品价钱"+tb_article.getPrice());
 			}
+		}
+	}
+	/**
+	 * 根据订单ID去查询商品信息,
+	 * 在此处根据订单Id查询出订单，去查询商品的时候，使用的是column的值如何确定，可以测试，将数据库查询出的值改为不通的列，
+	 * 发现查询出的结果确实是根据数据库的列名字进行定义的
+	 * @throws Exception
+	 */
+	@Test
+	public void testSelectB() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.getSqlSession();
+		orderInterference mapper = sqlSession.getMapper(orderInterference.class);
+		tb_order testSelect = mapper.testSelect(2);
+		List<tb_article> articles = testSelect.getArticles();
+		for (tb_article tb_article : articles) {
+			System.out.println(tb_article.getName()+tb_article.getPrice());
 		}
 	}
 }
